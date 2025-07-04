@@ -49,7 +49,7 @@
   ownCmd.push("!spawn-loot-timer=4");
   ownCmd.push("!spawn-loot-on");
   ownCmd.push("!timer-record=20");
-  ownCmd.push("!spawn=1:1:9:9");
+  ownCmd.push("!spawn=1:1:19:19");
 
   const mazeCmd: string[] = [];
   const makeWall = (x: number, y: number) => `!b=29:${x}:${y}:0`;
@@ -60,6 +60,47 @@
   }
 </script>
 
-<textarea>{initCmd.join("\n")}</textarea>
-<textarea>{ownCmd.join("\n")}</textarea>
-<textarea>{mazeCmd.join("\n")}</textarea>
+<!-- 初期化コマンド -->
+<div class="mb-8 max-w-xl mx-auto">
+  <label
+    for="initCmd"
+    class="block mb-2 text-xs font-bold text-green-400 tracking-widest uppercase"
+  >
+    初期化コマンド
+  </label>
+  <textarea
+    id="initCmd"
+    class="w-full h-40 p-3 rounded-md resize-none font-mono text-sm bg-black text-green-400 border border-green-700 focus:outline-none focus:ring-2 focus:ring-green-500/60 focus:border-green-500 shadow-md"
+    readonly>{initCmd.join("\n")}</textarea
+  >
+</div>
+
+<!-- 自作マップ用設定コマンド -->
+<div class="mb-8 max-w-xl mx-auto">
+  <label
+    for="ownCmd"
+    class="block mb-2 text-xs font-bold text-green-400 tracking-widest uppercase"
+  >
+    自作マップ用設定コマンド
+  </label>
+  <textarea
+    id="ownCmd"
+    class="w-full h-40 p-3 rounded-md resize-none font-mono text-sm bg-black text-green-400 border border-green-700 focus:outline-none focus:ring-2 focus:ring-green-500/60 focus:border-green-500 shadow-md"
+    readonly>{ownCmd.join("\n")}</textarea
+  >
+</div>
+
+<!-- 迷路マップ生成用コマンド -->
+<div class="mb-8 max-w-xl mx-auto">
+  <label
+    for="mazeCmd"
+    class="block mb-2 text-xs font-bold text-green-400 tracking-widest uppercase"
+  >
+    迷路マップ生成用コマンド
+  </label>
+  <textarea
+    id="mazeCmd"
+    class="w-full h-40 p-3 rounded-md resize-none font-mono text-sm bg-black text-green-400 border border-green-700 focus:outline-none focus:ring-2 focus:ring-green-500/60 focus:border-green-500 shadow-md"
+    readonly>{mazeCmd.join("\n")}</textarea
+  >
+</div>
