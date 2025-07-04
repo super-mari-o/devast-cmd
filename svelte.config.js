@@ -1,5 +1,5 @@
-import adapter from '@sveltejs/adapter-static';
-import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import adapter from "@sveltejs/adapter-static";
+import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -11,7 +11,7 @@ const config = {
 			fallback: "index.html",
 		}),
 		paths: {
-			base: process.env.GITHUB_PAGES ? "/devast-clone" : "",
+			base: process.env.GITHUB_PAGES ? "/devast-cmd" : "",
 		},
 	},
 };
