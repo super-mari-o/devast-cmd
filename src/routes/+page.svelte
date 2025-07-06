@@ -1,5 +1,11 @@
 <script lang="ts">
     import { ai } from "$lib/ai";
+    import * as easyBuilderStarterCmdRaw from "$lib/cmd/easy-builder-starter";
+    import * as easyGaugeCmdRaw from "$lib/cmd/easy-gauge";
+    import * as fastBotCmdRaw from "$lib/cmd/fast-bot";
+    import * as initCmdRaw from "$lib/cmd/init";
+    import * as ownCmdRaw from "$lib/cmd/own";
+    import * as utilCmdRaw from "$lib/cmd/util";
     import { maze } from "$lib/maze";
 
     let mapEditorCode = $state("");
@@ -40,12 +46,11 @@
         ];
     };
 
-    const utilCmd: string[] = [];
-    utilCmd.push("!regeneration-off");
-    utilCmd.push("!clean-record");
-    utilCmd.push("!clean-map");
+    const toArray = (cmd: string) => cmd.trim().split("\n");
 
-    const initCmd: string[] = [];
+    const utilCmd = toArray(utilCmdRaw.default);
+
+    const initCmd = toArray(initCmdRaw.default);
     for (const row of ai.slice(1)) {
         const [day, night] = row[2]
             .split("/")
@@ -63,65 +68,25 @@
     for (const row of ai.slice(1)) {
         initCmd.push(`!AI-life=${row[0]}:${row[1]}`);
     }
-    initCmd.push("!harvest-speed=1");
-    initCmd.push("!xp=1");
-    initCmd.push("!regeneration-on");
-    initCmd.push("!clean-starter-kit");
-    initCmd.push("!timer-starter-kit=0");
-    initCmd.push("harvest-speed=1");
-    initCmd.push("!xp=1");
-    initCmd.push("!spawn-random");
 
-    initCmd.push("!gauge-food-decrease=12");
-    initCmd.push("!gauge-cold-decrease=35");
-    initCmd.push("!gauge-cold-increase=50");
-    initCmd.push("!gauge-stamina-decrease=200");
-    initCmd.push("!gauge-stamina-increase=150");
-    initCmd.push("!gauge-rad-decrease=240");
-    initCmd.push("!gauge-life-decrease=50");
-    initCmd.push("!gauge-life-increase=50");
-
-    const ownCmd: string[] = [];
-    ownCmd.push("!AI-speed=hal_bot:60:60");
-    ownCmd.push("!AI-damage=hal_bot:10:10");
-    ownCmd.push("!AI-life=hal_bot:3000");
-    ownCmd.push("!AI-speed=tesla_bot:60:60");
-    ownCmd.push("!AI-damage=tesla_bot:50:50");
-    ownCmd.push("!AI-life=tesla_bot:9999");
-
-    ownCmd.push("!regeneration-on");
-    ownCmd.push("!ghoul-regeneration-on");
-    ownCmd.push("!house-regeneration-off");
-    ownCmd.push("!vegetation-regeneration-on");
-    ownCmd.push("!clean-starter-kit");
-    ownCmd.push("!timer-starter-kit=0");
-    ownCmd.push("!add-starter-kit=stone_axe");
-    ownCmd.push("!add-starter-kit=steel_pickaxe");
-    ownCmd.push("!add-starter-kit=workbench2*1");
-    ownCmd.push("!add-starter-kit=armor_fire_2");
-    ownCmd.push("!add-starter-kit=alloys*11");
-    ownCmd.push("!add-starter-kit=shaped_metal*45");
-    ownCmd.push("!add-starter-kit=junk*14");
-    ownCmd.push("!add-starter-kit=mp5");
-
-    ownCmd.push("harvest-speed=10");
-    ownCmd.push("!xp=20");
-    ownCmd.push("!spawn-loot-on");
-    ownCmd.push("!spawn-loot-timer=5");
-    ownCmd.push("!spawn-loot-factor=59");
-    ownCmd.push("!spawn=135:135:139:139");
-
-    ownCmd.push("!gauge-food-decrease=1");
-    ownCmd.push("!gauge-cold-decrease=0");
-    ownCmd.push("!gauge-cold-increase=9999");
-    ownCmd.push("!gauge-stamina-decrease=0");
-    ownCmd.push("!gauge-stamina-increase=9999");
-    ownCmd.push("!gauge-rad-decrease=0");
-    ownCmd.push("!gauge-life-decrease=50");
-    ownCmd.push("!gauge-life-increase=200");
+    const ownCmd = toArray(ownCmdRaw.default);
+    for (const row of ai.slice(1, -3)) {
+        const [day, night] = row[3]
+            .split("/")
+            .map((v) => v.trim())
+            .map(Number);
+        ownCmd.push(`!AI-damage=${row[0]}:0:0`);
+    }
+    for (const row of ai.slice(1, -3)) {
+        ownCmd.push(`!AI-life=${row[0]}:1`);
+    }
+    ownCmd.push(...toArray(easyBuilderStarterCmdRaw.default));
+    ownCmd.push(...toArray(easyGaugeCmdRaw.default));
+    ownCmd.push(...toArray(fastBotCmdRaw.default));
 
     const mazeCmd: string[] = [];
-    const makeWall = (x: number, y: number) => `!b=29:${x}:${y}:0`;
+    const makeWoodenWall = (x: number, y: number) => `!b=27:${x}:${y}:0`;
+    const makeMetalWall = (x: number, y: number) => `!b=29:${x}:${y}:0`;
     const makeFloor1 = (x: number, y: number) => `!b=62:${x}:${y}:0`;
     const makeFloor2 = (x: number, y: number) => `!b=67:${x}:${y}:0`;
     const zoom = 5;
@@ -134,10 +99,19 @@
                     const x = mx * zoom + kx;
                     const y = my * zoom + ky;
                     if (v) {
-                        mazeCmd.push(makeWall(x, y));
+                        mazeCmd.push(makeMetalWall(x, y));
                     } else {
                     }
                 }
+            }
+        }
+    }
+
+    const fillCmd: string[] = [];
+    for (let y = 0; y < 150; y++) {
+        for (let x = 0; x < 150; x++) {
+            if (Math.random() < 0.9) {
+                fillCmd.push(makeWoodenWall(x, y));
             }
         }
     }
@@ -247,5 +221,20 @@
         id="mazeCmd"
         class="w-full h-40 p-3 rounded-md resize-none font-mono text-sm bg-black text-green-400 border border-green-700 focus:outline-none focus:ring-2 focus:ring-green-500/60 focus:border-green-500 shadow-md"
         readonly>{mazeCmd.join("\n")}</textarea
+    >
+</div>
+
+<!-- 埋め立てマップ生成用コマンド -->
+<div class="mb-8 max-w-xl mx-auto">
+    <label
+        for="fillCmd"
+        class="block mb-2 text-xs font-bold text-green-400 tracking-widest uppercase"
+    >
+        埋め立てマップ生成用コマンド
+    </label>
+    <textarea
+        id="fillCmd"
+        class="w-full h-40 p-3 rounded-md resize-none font-mono text-sm bg-black text-green-400 border border-green-700 focus:outline-none focus:ring-2 focus:ring-green-500/60 focus:border-green-500 shadow-md"
+        readonly>{fillCmd.join("\n")}</textarea
     >
 </div>
