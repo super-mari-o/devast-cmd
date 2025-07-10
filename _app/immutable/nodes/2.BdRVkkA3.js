@@ -1,4 +1,4 @@
-import"../chunks/CWj6FrbW.js";import{h as w,i as ne,I as se,s as Y,k as J,m as ie,o as le,ay as de,az as ce,aA as ue,aB as fe,U as me,af as ge,M as be,au as L,am as Q,p as _e,a6 as ve,r as l,a7 as xe,a2 as x,q as pe,O as he,u as g,an as k,v as b}from"../chunks/BwH3iGxZ.js";import{d as ke}from"../chunks/DdSCrwke.js";function _(e){w&&ne(e)!==null&&se(e)}let X=!1;function F(){X||(X=!0,document.addEventListener("reset",e=>{Promise.resolve().then(()=>{var r;if(!e.defaultPrevented)for(const t of e.target.elements)(r=t.__on_r)==null||r.call(t)})},{capture:!0}))}function we(e){var r=ie,t=le;Y(null),J(null);try{return e()}finally{Y(r),J(t)}}function ye(e,r,t,i=t){e.addEventListener(r,()=>we(t));const o=e.__on_r;o?e.__on_r=()=>{o(),i(!0)}:e.__on_r=()=>i(!0),F()}const Ae=Symbol("is custom element"),Ce=Symbol("is html");function Ie(e){if(w){var r=!1,t=()=>{if(!r){if(r=!0,e.hasAttribute("value")){var i=e.value;Z(e,"value",null),e.value=i}if(e.hasAttribute("checked")){var o=e.checked;Z(e,"checked",null),e.checked=o}}};e.__on_r=t,ce(t),F()}}function v(e,r){var t=ee(e);t.value===(t.value=r??void 0)||e.value===r&&(r!==0||e.nodeName!=="PROGRESS")||(e.value=r??"")}function Z(e,r,t,i){var o=ee(e);w&&(o[r]=e.getAttribute(r),r==="src"||r==="srcset"||r==="href"&&e.nodeName==="LINK")||o[r]!==(o[r]=t)&&(r==="loading"&&(e[ue]=t),e.removeAttribute(r))}function ee(e){return e.__attributes??(e.__attributes={[Ae]:e.nodeName.includes("-"),[Ce]:e.namespaceURI===de})}function $e(e,r,t=r){var i=fe();ye(e,"input",o=>{var n=o?e.defaultValue:e.value;if(n=O(e)?T(n):n,t(n),i&&n!==(n=r())){var d=e.selectionStart,c=e.selectionEnd;e.value=n??"",c!==null&&(e.selectionStart=d,e.selectionEnd=Math.min(c,e.value.length))}}),(w&&e.defaultValue!==e.value||me(r)==null&&e.value)&&t(O(e)?T(e.value):e.value),ge(()=>{var o=r();O(e)&&o===T(e.value)||e.type==="date"&&!o&&!e.value||o!==e.value&&(e.value=o??"")})}function O(e){var r=e.type;return r==="number"||r==="range"}function T(e){return e===""?null:+e}const p=[["","life","speed [day / night]","damages [day / night]","aggro"],["normal_ghoul","160","12 / 22","8 / 20","16min"],["fast_ghoul","120","18 / 28","3 / 7","32min"],["explosive_ghoul","80","12 / 23","6 / 20","48min"],["radioactive_ghoul","160","12 / 23","5 / 15","64min"],["armored_ghoul","800","12 / 23","20 / 50","80min"],["pumpkin_ghoul","160","4 / 4","20 / 30","16min"],["lapabot_repair","600","8 / 8","30 / 30","0"],["hal_bot","800","12 / 12","30 / 30","0"],["tesla_bot","3000","10 / 10","80 / 80","0"]],ze=`
+import"../chunks/CWj6FrbW.js";import{h as w,i as ne,I as se,s as Y,k as J,m as ie,o as le,aA as de,aB as ce,aC as ue,aD as fe,U as me,af as ge,M as be,aw as L,am as Q,p as _e,a6 as ve,r as l,a7 as xe,a2 as x,q as pe,O as he,u as g,an as k,v as b}from"../chunks/DTRklnpi.js";import{d as ke}from"../chunks/jgErDtKB.js";function _(e){w&&ne(e)!==null&&se(e)}let X=!1;function F(){X||(X=!0,document.addEventListener("reset",e=>{Promise.resolve().then(()=>{var r;if(!e.defaultPrevented)for(const t of e.target.elements)(r=t.__on_r)==null||r.call(t)})},{capture:!0}))}function we(e){var r=ie,t=le;Y(null),J(null);try{return e()}finally{Y(r),J(t)}}function ye(e,r,t,i=t){e.addEventListener(r,()=>we(t));const o=e.__on_r;o?e.__on_r=()=>{o(),i(!0)}:e.__on_r=()=>i(!0),F()}const Ae=Symbol("is custom element"),Ce=Symbol("is html");function Ie(e){if(w){var r=!1,t=()=>{if(!r){if(r=!0,e.hasAttribute("value")){var i=e.value;Z(e,"value",null),e.value=i}if(e.hasAttribute("checked")){var o=e.checked;Z(e,"checked",null),e.checked=o}}};e.__on_r=t,ce(t),F()}}function v(e,r){var t=ee(e);t.value===(t.value=r??void 0)||e.value===r&&(r!==0||e.nodeName!=="PROGRESS")||(e.value=r??"")}function Z(e,r,t,i){var o=ee(e);w&&(o[r]=e.getAttribute(r),r==="src"||r==="srcset"||r==="href"&&e.nodeName==="LINK")||o[r]!==(o[r]=t)&&(r==="loading"&&(e[ue]=t),e.removeAttribute(r))}function ee(e){return e.__attributes??(e.__attributes={[Ae]:e.nodeName.includes("-"),[Ce]:e.namespaceURI===de})}function $e(e,r,t=r){var i=fe();ye(e,"input",o=>{var n=o?e.defaultValue:e.value;if(n=O(e)?T(n):n,t(n),i&&n!==(n=r())){var d=e.selectionStart,c=e.selectionEnd;e.value=n??"",c!==null&&(e.selectionStart=d,e.selectionEnd=Math.min(c,e.value.length))}}),(w&&e.defaultValue!==e.value||me(r)==null&&e.value)&&t(O(e)?T(e.value):e.value),ge(()=>{var o=r();O(e)&&o===T(e.value)||e.type==="date"&&!o&&!e.value||o!==e.value&&(e.value=o??"")})}function O(e){var r=e.type;return r==="number"||r==="range"}function T(e){return e===""?null:+e}const p=[["","life","speed [day / night]","damages [day / night]","aggro"],["normal_ghoul","160","12 / 22","8 / 20","16min"],["fast_ghoul","120","18 / 28","3 / 7","32min"],["explosive_ghoul","80","12 / 23","6 / 20","48min"],["radioactive_ghoul","160","12 / 23","5 / 15","64min"],["armored_ghoul","800","12 / 23","20 / 50","80min"],["pumpkin_ghoul","160","4 / 4","20 / 30","16min"],["lapabot_repair","600","8 / 8","30 / 30","0"],["hal_bot","800","12 / 12","30 / 30","0"],["tesla_bot","3000","10 / 10","80 / 80","0"]],ze=`
 !add-starter-kit=sulfur_pickaxe
 !add-starter-kit=sulfur_axe
 !add-starter-kit=workbench2*5
@@ -18,11 +18,11 @@ import"../chunks/CWj6FrbW.js";import{h as w,i as ne,I as se,s as Y,k as J,m as i
 !gauge-life-increase=200
 `,Se=`
 !AI-speed=hal_bot:60:60
-!AI-damage=hal_bot:1:1
-!AI-life=hal_bot:500
+!AI-damage=hal_bot:3:3
+!AI-life=hal_bot:1024
 !AI-speed=tesla_bot:60:60
-!AI-damage=tesla_bot:2:2
-!AI-life=tesla_bot:1000
+!AI-damage=tesla_bot:4:4
+!AI-life=tesla_bot:4096
 `,Ee=`
 !regeneration-on
 !clean-starter-kit
@@ -58,6 +58,8 @@ import"../chunks/CWj6FrbW.js";import{h as w,i as ne,I as se,s as Y,k as J,m as i
 !clean-record
 !clean-map
 !timer-record=7
+!start-record
+!stop-record
 `,Le=`
 
 11111111111111111111111111111
