@@ -3,4 +3,6 @@ export default `
 !clean-record
 !clean-map
 !timer-record=7
+!start-record
+!stop-record
 `;
