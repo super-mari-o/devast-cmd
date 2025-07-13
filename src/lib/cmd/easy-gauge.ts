@@ -1,4 +1,4 @@
-export default `
+export const easyGauge = `
 !gauge-food-decrease=0
 !gauge-cold-decrease=0
 !gauge-cold-increase=9999

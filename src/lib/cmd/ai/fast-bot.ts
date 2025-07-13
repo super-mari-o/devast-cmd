@@ -1,4 +1,4 @@
-export default `
+export const ai_fastBot = `
 !AI-speed=hal_bot:60:60
 !AI-damage=hal_bot:3:3
 !AI-life=hal_bot:1024

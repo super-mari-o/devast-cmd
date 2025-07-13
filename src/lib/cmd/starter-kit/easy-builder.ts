@@ -1,4 +1,6 @@
-export default `
+export const starterKit_easyBuilder = `
+!clean-starter-kit
+!timer-starter-kit=0
 !add-starter-kit=sulfur_pickaxe
 !add-starter-kit=sulfur_axe
 !add-starter-kit=workbench2*5

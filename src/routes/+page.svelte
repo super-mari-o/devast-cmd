@@ -1,11 +1,12 @@
 <script lang="ts">
-    import { ai } from "$lib/ai";
-    import * as easyBuilderStarterCmdRaw from "$lib/cmd/easy-builder-starter";
-    import * as easyGaugeCmdRaw from "$lib/cmd/easy-gauge";
-    import * as fastBotCmdRaw from "$lib/cmd/fast-bot";
-    import * as initCmdRaw from "$lib/cmd/init";
-    import * as ownCmdRaw from "$lib/cmd/own";
-    import * as utilCmdRaw from "$lib/cmd/util";
+    import { ai_fastBot } from "$lib/cmd/ai/fast-bot";
+    import { ai_init } from "$lib/cmd/ai/init";
+    import { ai_strongPumpkinGhoul } from "$lib/cmd/ai/strong-pumpkin-ghoul";
+    import { ai_weakGhoul } from "$lib/cmd/ai/weak-ghoul";
+    import { easyGauge } from "$lib/cmd/easy-gauge";
+    import { init } from "$lib/cmd/init";
+    import { starterKit_enjoyBeginner } from "$lib/cmd/starter-kit/enjoy-beginner";
+    import { util } from "$lib/cmd/util";
     import { maze } from "$lib/maze";
 
     let mapEditorCode = $state("");
@@ -47,42 +48,15 @@
     };
 
     const toArray = (cmd: string) => cmd.trim().split("\n");
+    const utilCmd = toArray(util);
+    const initCmd = toArray(init).concat(toArray(ai_init));
 
-    const utilCmd = toArray(utilCmdRaw.default);
-
-    const initCmd = toArray(initCmdRaw.default);
-    for (const row of ai.slice(1)) {
-        const [day, night] = row[2]
-            .split("/")
-            .map((v) => v.trim())
-            .map(Number);
-        initCmd.push(`!AI-speed=${row[0]}:${day}:${night}`);
-    }
-    for (const row of ai.slice(1)) {
-        const [day, night] = row[3]
-            .split("/")
-            .map((v) => v.trim())
-            .map(Number);
-        initCmd.push(`!AI-damage=${row[0]}:${day}:${night}`);
-    }
-    for (const row of ai.slice(1)) {
-        initCmd.push(`!AI-life=${row[0]}:${row[1]}`);
-    }
-
-    const ownCmd = toArray(ownCmdRaw.default);
-    for (const row of ai.slice(1, -3)) {
-        const [day, night] = row[3]
-            .split("/")
-            .map((v) => v.trim())
-            .map(Number);
-        ownCmd.push(`!AI-damage=${row[0]}:0:0`);
-    }
-    for (const row of ai.slice(1, -3)) {
-        ownCmd.push(`!AI-life=${row[0]}:1`);
-    }
-    ownCmd.push(...toArray(easyBuilderStarterCmdRaw.default));
-    ownCmd.push(...toArray(easyGaugeCmdRaw.default));
-    ownCmd.push(...toArray(fastBotCmdRaw.default));
+    const ownCmd = [...initCmd];
+    ownCmd.push(...toArray(easyGauge));
+    ownCmd.push(...toArray(ai_weakGhoul));
+    ownCmd.push(...toArray(ai_strongPumpkinGhoul));
+    ownCmd.push(...toArray(ai_fastBot));
+    ownCmd.push(...toArray(starterKit_enjoyBeginner));
 
     const mazeCmd: string[] = [];
     const makeWoodenWall = (x: number, y: number) => `!b=27:${x}:${y}:0`;

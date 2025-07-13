@@ -1,4 +1,4 @@
-export default `
+export const init = `
 !regeneration-on
 !clean-starter-kit
 !timer-starter-kit=0
