@@ -61,6 +61,7 @@
     const mazeCmd: string[] = [];
     const makeWoodenWall = (x: number, y: number) => `!b=27:${x}:${y}:0`;
     const makeMetalWall = (x: number, y: number) => `!b=29:${x}:${y}:0`;
+    const makeBunkerWall = (x: number, y: number) => `!b=153:${x}:${y}:0`;
     const makeFloor1 = (x: number, y: number) => `!b=62:${x}:${y}:0`;
     const makeFloor2 = (x: number, y: number) => `!b=67:${x}:${y}:0`;
     const zoom = 5;
@@ -73,7 +74,7 @@
                     const x = mx * zoom + kx;
                     const y = my * zoom + ky;
                     if (v) {
-                        mazeCmd.push(makeMetalWall(x, y));
+                        mazeCmd.push(makeBunkerWall(x, y));
                     } else {
                     }
                 }
