@@ -1,6 +1,6 @@
 export const util = `
 
-マップ初期化
+マップ掃除
 !regeneration-off
 !ghoul-regeneration-off
 !house-regeneration-off
